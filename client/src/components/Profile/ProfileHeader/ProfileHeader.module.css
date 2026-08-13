@@ -1,0 +1,42 @@
+.profile {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.profile img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile h2 {
+  margin-top: 15px;
+}
+
+.profile p {
+  color: #666;
+}
+
+.bio {
+  margin: 15px 0;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 20px 0;
+}
+
+.stats div {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile button {
+  padding: 10px 20px;
+  cursor: pointer;
+}

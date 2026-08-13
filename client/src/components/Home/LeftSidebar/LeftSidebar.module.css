@@ -1,0 +1,89 @@
+.sidebar {
+  position: sticky;
+  top: 95px;
+
+  height: fit-content;
+}
+
+.profileCard {
+  background: white;
+
+  border-radius: 16px;
+
+  padding: 25px 20px;
+
+  text-align: center;
+
+  box-shadow: 0 4px 15px rgba(0,0,0,.05);
+
+  margin-bottom: 20px;
+}
+
+.profileCard img {
+  width: 90px;
+  height: 90px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  margin-bottom: 15px;
+}
+
+.profileCard h3 {
+  font-size: 1.2rem;
+
+  margin-bottom: 6px;
+}
+
+.profileCard p {
+  color: gray;
+
+  font-size: .9rem;
+}
+
+.menu {
+  background: white;
+
+  border-radius: 16px;
+
+  padding: 12px;
+
+  box-shadow: 0 4px 15px rgba(0,0,0,.05);
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.menu a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  text-decoration: none;
+
+  color: #374151;
+
+  padding: 14px;
+
+  border-radius: 12px;
+
+  transition: .25s;
+}
+
+.menu a:hover {
+  background: #eff6ff;
+
+  color: #2563eb;
+}
+
+.menu a.active {
+  background: #2563eb;
+
+  color: white;
+}
+
+.menu svg {
+  font-size: 20px;
+}

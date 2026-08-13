@@ -1,0 +1,193 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.9);
+  backdrop-filter: blur(8px);
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  z-index:9999;
+
+  animation:fade .25s ease;
+}
+
+@keyframes fade{
+  from{
+    opacity:0;
+  }
+
+  to{
+    opacity:1;
+  }
+}
+
+.viewer{
+  position:relative;
+
+  width:92vw;
+  height:92vh;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.viewer img{
+
+  max-width:85%;
+  max-height:85%;
+
+  object-fit:contain;
+
+  border-radius:14px;
+
+  box-shadow:0 10px 40px rgba(0,0,0,.45);
+}
+
+.close{
+
+  position:absolute;
+
+  top:15px;
+  right:20px;
+
+  width:48px;
+  height:48px;
+
+  border:none;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,.12);
+
+  color:white;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  cursor:pointer;
+
+  transition:.25s;
+}
+
+.close svg{
+  font-size:30px;
+}
+
+.close:hover{
+
+  background:white;
+  color:black;
+}
+
+.left,
+.right{
+
+  position:absolute;
+
+  top:50%;
+
+  transform:translateY(-50%);
+
+  width:60px;
+  height:60px;
+
+  border:none;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,.12);
+
+  color:white;
+
+  cursor:pointer;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  transition:.25s;
+}
+
+.left svg,
+.right svg{
+
+  font-size:34px;
+}
+
+.left{
+  left:35px;
+}
+
+.right{
+  right:35px;
+}
+
+.left:hover,
+.right:hover{
+
+  background:white;
+  color:black;
+}
+
+.counter{
+
+  position:absolute;
+
+  top:22px;
+
+  left:50%;
+
+  transform:translateX(-50%);
+
+  color:white;
+
+  font-size:15px;
+
+  background:rgba(0,0,0,.45);
+
+  padding:8px 18px;
+
+  border-radius:999px;
+}
+
+.dots{
+
+  position:absolute;
+
+  bottom:25px;
+
+  left:50%;
+
+  transform:translateX(-50%);
+
+  display:flex;
+
+  gap:10px;
+}
+
+.dot{
+
+  width:10px;
+  height:10px;
+
+  border-radius:50%;
+
+  background:#777;
+
+  cursor:pointer;
+
+  transition:.25s;
+}
+
+.active{
+
+  width:28px;
+
+  border-radius:20px;
+
+  background:white;
+}

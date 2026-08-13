@@ -1,0 +1,14 @@
+.comment{
+    padding:15px;
+    border-bottom:1px solid #eee;
+}
+
+.actions{
+    margin-top:8px;
+    display:flex;
+    gap:10px;
+}
+
+.actions button{
+    cursor:pointer;
+}

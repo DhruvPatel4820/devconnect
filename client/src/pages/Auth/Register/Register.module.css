@@ -1,0 +1,306 @@
+.page {
+  min-height: 100vh;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+.container {
+  width: 1100px;
+  max-width: 100%;
+  min-height: 680px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.12);
+}
+
+/* ================= LEFT ================= */
+
+.left {
+  background: #2563eb;
+  color: white;
+
+  padding: 45px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  color: white;
+  text-decoration: none;
+
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.leftContent {
+  margin: auto 0;
+  max-width: 450px;
+}
+
+.leftContent h1 {
+  font-size: 46px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.leftContent h1 span {
+  color: #dbeafe;
+}
+
+.leftContent p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #dbeafe;
+  margin-bottom: 35px;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.features div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.features strong {
+  font-size: 17px;
+}
+
+.features span {
+  font-size: 14px;
+  color: #dbeafe;
+}
+
+/* ================= RIGHT ================= */
+
+.right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+}
+
+.card {
+  width: 100%;
+  max-width: 420px;
+}
+
+.heading {
+  margin-bottom: 25px;
+}
+
+.heading h2 {
+  margin: 0 0 8px;
+
+  font-size: 30px;
+  color: #111827;
+}
+
+.heading p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* ================= ERROR ================= */
+
+.error {
+  padding: 12px 14px;
+  margin-bottom: 18px;
+
+  border-radius: 8px;
+
+  background: #fef2f2;
+  color: #dc2626;
+
+  font-size: 14px;
+}
+
+/* ================= INPUT ================= */
+
+.inputGroup {
+  margin-bottom: 17px;
+}
+
+.inputGroup label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.inputWrapper {
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 0 13px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 9px;
+
+  background: white;
+
+  transition: 0.2s;
+}
+
+.inputWrapper:focus-within {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.inputWrapper svg {
+  flex-shrink: 0;
+  color: #6b7280;
+}
+
+.inputWrapper input {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  font-size: 14px;
+  color: #111827;
+}
+
+.inputWrapper input::placeholder {
+  color: #9ca3af;
+}
+
+.at {
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.inputGroup small {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #9ca3af;
+  font-size: 11px;
+}
+
+/* ================= PASSWORD ================= */
+
+.passwordBtn {
+  border: none;
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+
+  color: #6b7280;
+}
+
+/* ================= BUTTON ================= */
+
+.registerBtn {
+  width: 100%;
+  height: 48px;
+
+  margin-top: 8px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: #2563eb;
+  color: white;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.registerBtn:hover {
+  background: #1d4ed8;
+}
+
+.registerBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ================= LOGIN ================= */
+
+.loginText {
+  margin-top: 22px;
+
+  text-align: center;
+
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.loginText a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.loginText a:hover {
+  text-decoration: underline;
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width: 850px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .left {
+    display: none;
+  }
+
+  .right {
+    min-height: 680px;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 500px) {
+  .page {
+    padding: 15px;
+  }
+
+  .container {
+    border-radius: 16px;
+  }
+
+  .right {
+    padding: 25px 20px;
+  }
+
+  .heading h2 {
+    font-size: 26px;
+  }
+}

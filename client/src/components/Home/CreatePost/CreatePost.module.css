@@ -1,0 +1,355 @@
+/* =========================
+   CREATE POST BOX
+========================= */
+
+.createBox {
+  width: 100%;
+
+  background: #ffffff;
+
+  padding: 20px;
+
+  border-radius: 16px;
+
+  border: 1px solid #e5e7eb;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+
+/* =========================
+   TOP SECTION
+========================= */
+
+.top {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+}
+
+.top img {
+  flex-shrink: 0;
+
+  width: 46px;
+  height: 46px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+}
+
+
+/* =========================
+   CONTENT INPUT
+========================= */
+
+.top input {
+  flex: 1;
+
+  height: 46px;
+
+  padding: 0 20px;
+
+  border: none;
+
+  outline: none;
+
+  border-radius: 25px;
+
+  background: #f3f4f6;
+
+  color: #111827;
+
+  font-size: 15px;
+
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.top input::placeholder {
+  color: #9ca3af;
+}
+
+.top input:focus {
+  background: #f9fafb;
+
+  box-shadow: 0 0 0 2px #dbeafe;
+}
+
+
+/* =========================
+   IMAGE PREVIEW
+========================= */
+
+.preview {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 10px;
+
+  margin-top: 16px;
+}
+
+.previewItem {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 1 / 1;
+
+  overflow: hidden;
+
+  border-radius: 12px;
+
+  background: #f3f4f6;
+}
+
+.previewItem img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+
+/* =========================
+   REMOVE IMAGE BUTTON
+========================= */
+
+.previewItem button {
+  position: absolute;
+
+  top: 7px;
+  right: 7px;
+
+  width: 28px;
+  height: 28px;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.65);
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.previewItem button:hover {
+  background: rgba(220, 38, 38, 0.9);
+
+  transform: scale(1.05);
+}
+
+.previewItem button svg {
+  font-size: 15px;
+}
+
+
+/* =========================
+   BOTTOM SECTION
+========================= */
+
+.bottom {
+  margin-top: 16px;
+
+  padding-top: 14px;
+
+  border-top: 1px solid #eeeeee;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+
+/* =========================
+   PHOTO BUTTON
+========================= */
+
+.bottom button {
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 9px 12px;
+
+  border-radius: 9px;
+
+  color: #374151;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.bottom button:hover:not(:disabled) {
+  background: #eff6ff;
+
+  color: #2563eb;
+}
+
+.bottom button svg {
+  font-size: 19px;
+}
+
+
+/* =========================
+   POST BUTTON
+========================= */
+
+.postBtn {
+  min-width: 90px;
+
+  padding: 10px 22px !important;
+
+  border-radius: 10px !important;
+
+  background: #2563eb !important;
+
+  color: #ffffff !important;
+
+  font-size: 14px !important;
+
+  font-weight: 600 !important;
+
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.postBtn:hover:not(:disabled) {
+  background: #1d4ed8 !important;
+
+  color: #ffffff !important;
+
+  transform: translateY(-1px);
+
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.25);
+}
+
+
+/* =========================
+   DISABLED STATE
+========================= */
+
+.bottom button:disabled,
+.postBtn:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+
+/* =========================
+   MODAL CREATE POST
+========================= */
+
+.createModalBox {
+  width: 100%;
+
+  background: #ffffff;
+
+  border-radius: 16px;
+}
+
+
+/* =========================
+   MODAL MOBILE
+========================= */
+
+@media (max-width: 600px) {
+  .createBox {
+    padding: 16px;
+
+    border-radius: 14px;
+  }
+
+  .top {
+    gap: 10px;
+  }
+
+  .top img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .top input {
+    height: 42px;
+
+    padding: 0 16px;
+
+    font-size: 14px;
+  }
+
+  .preview {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 8px;
+  }
+
+  .bottom {
+    margin-top: 12px;
+
+    padding-top: 12px;
+  }
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 400px) {
+  .top input {
+    font-size: 13px;
+  }
+
+  .bottom button {
+    padding: 8px 9px;
+  }
+
+  .postBtn {
+    min-width: 75px;
+
+    padding: 9px 16px !important;
+  }
+}
