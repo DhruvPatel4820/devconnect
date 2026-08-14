@@ -19,7 +19,15 @@ const {
 
 const { createPostSchema } = require("../validators/post.validator");
 
-router.get("/", verifyJWT, getAllPosts);
+router.get(
+  "/",
+  (req, res, next) => {
+    console.log("🔥 POSTS ROUTE HIT");
+    next();
+  },
+  verifyJWT,
+  getAllPosts,
+);
 router.get("/user/:username", verifyJWT, getPostsByUser);
 
 router.get("/saved", verifyJWT, getSavedPosts);
