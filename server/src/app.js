@@ -13,7 +13,10 @@ const notificationRouter = require("./routes/notification.routes");
 const app = express();
 app.use(
   cors({
-    origin: "https://devconnect-frontend-qipf.onrender.com",
+    origin: [
+      "https://devconnect-frontend-qipf.onrender.com",
+      "https://devconnect-1-gsgy.onrender.com",
+    ],
     credentials: true,
   }),
 );
