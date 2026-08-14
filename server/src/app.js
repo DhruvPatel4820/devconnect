@@ -13,10 +13,14 @@ const notificationRouter = require("./routes/notification.routes");
 const app = express();
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      "https://devconnect-backend-lgof.onrender.com/api/v1",
+    ],
     credentials: true,
   }),
 );
+https://devconnect-frontend-qipf.onrender.com/login
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
