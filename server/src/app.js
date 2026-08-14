@@ -14,13 +14,12 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "http://localhost:5173",
+      // "http://localhost:5173",
       "https://devconnect-frontend-qipf.onrender.com",
     ],
     credentials: true,
   }),
 );
-https://devconnect-frontend-qipf.onrender.com/login
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
