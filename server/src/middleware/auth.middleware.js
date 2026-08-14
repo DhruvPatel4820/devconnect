@@ -3,9 +3,35 @@ const User = require("../models/user.model");
 const ApiError = require("../utils/ApiError");
 const asyncHandler = require("../utils/asyncHandler");
 
+// exports.verifyJWT = asyncHandler(async (req, res, next) => {
+//   console.log("Cookies received:", Object.keys(req.cookies || {}));
+//   console.log("Has accessToken:", !!req.cookies?.accessToken);
+//   const token =
+//     req.cookies?.accessToken ||
+//     req.header("Authorization")?.replace("Bearer ", "");
+
+//   if (!token) {
+//     throw new ApiError(401, "Unauthorized request");
+//   }
+
+//   const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+
+//   const user = await User.findById(decodedToken._id).select(
+//     "-password -refreshToken",
+//   );
+
+//   if (!user) {
+//     throw new ApiError(401, "Invalid access token");
+//   }
+
+//   req.user = user;
+
+//   next();
+// });
 exports.verifyJWT = asyncHandler(async (req, res, next) => {
-  console.log("Cookies received:", Object.keys(req.cookies || {}));
-  console.log("Has accessToken:", !!req.cookies?.accessToken);
+  console.log("COOKIE NAMES:", Object.keys(req.cookies || {}));
+  console.log("ACCESS TOKEN EXISTS:", !!req.cookies?.accessToken);
+
   const token =
     req.cookies?.accessToken ||
     req.header("Authorization")?.replace("Bearer ", "");
@@ -25,6 +51,5 @@ exports.verifyJWT = asyncHandler(async (req, res, next) => {
   }
 
   req.user = user;
-
   next();
 });
