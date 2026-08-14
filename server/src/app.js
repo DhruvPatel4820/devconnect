@@ -15,7 +15,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://devconnect-backend-lgof.onrender.com/api/v1",
+      "https://devconnect-frontend-qipf.onrender.com",
     ],
     credentials: true,
   }),
