@@ -15,7 +15,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://devconnect-backend-lgof.onrender.com/api/v1",
+  baseURL: "https://devconnect-04gm.onrender.com/api/v1",
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
