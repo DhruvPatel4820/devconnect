@@ -1,9 +1,14 @@
-.feed{
+.feed {
+  width: 100%;
+  min-width: 0;
 
-display:flex;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
-flex-direction:column;
-
-gap:20px;
-
+@media (max-width: 768px) {
+  .feed {
+    gap: 14px;
+  }
 }

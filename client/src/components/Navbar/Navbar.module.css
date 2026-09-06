@@ -724,3 +724,33 @@
     height: 38px;
   }
 }
+
+@media (max-width: 380px) {
+  .navbar {
+    padding: 0 8px;
+    gap: 4px;
+  }
+
+  .logo {
+    font-size: 1.1rem;
+  }
+
+  .navLinks {
+    gap: 1px;
+  }
+
+  .navLinks a,
+  .navLinks button {
+    width: 34px;
+    height: 36px;
+  }
+
+  .createBtn {
+    width: 36px !important;
+  }
+
+  .avatarBtn img {
+    width: 34px;
+    height: 34px;
+  }
+}
