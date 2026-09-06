@@ -141,7 +141,7 @@ export default function Navbar() {
             LOGO
         ========================= */}
 
-        <Link to="/" className={styles.logo}>
+        <Link to="/home" className={styles.logo}>
           DevConnect
         </Link>
 
