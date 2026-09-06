@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ProfileSkeleton from "../../../components/common/ProfileSkeleton/ProfileSkeleton";
+import ProfileSkeleton from "../../../components/Common/ProfileSkeleton/ProfileSkeleton";
 
 import ProfileHeader from "../ProfileHeader/ProfileHeader";
 import UserPosts from "../UserPosts/UserPosts";
@@ -40,8 +40,8 @@ function ProfilePage() {
   };
 
   if (!profile) {
-  return <ProfileSkeleton />;
-}
+    return <ProfileSkeleton />;
+  }
 
   return (
     <main className={styles.page}>

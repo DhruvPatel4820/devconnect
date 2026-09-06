@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FiSearch, FiUser } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-import UserSkeleton from "../../components/common/UserSkeleton/UserSkeleton";
+import UserSkeleton from "../../components/Common/UserSkeleton/UserSkeleton";
 
 import { searchUsers } from "../../services/user.service";
 import styles from "./Search.module.css";
