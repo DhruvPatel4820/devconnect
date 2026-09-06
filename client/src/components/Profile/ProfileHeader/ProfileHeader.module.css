@@ -1,8 +1,17 @@
 .profile {
   background: white;
-  padding: 30px;
-  border-radius: 12px;
+  border-radius: 18px;
+  padding: 35px 25px;
   text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.profile > div:first-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
 }
 
 .profile img {
@@ -13,30 +22,71 @@
 }
 
 .profile h2 {
-  margin-top: 15px;
+  margin: 10px 0 4px;
+  font-size: 26px;
+  color: #111827;
 }
 
-.profile p {
-  color: #666;
+.profile > p {
+  margin: 5px 0;
+  color: #6b7280;
 }
 
 .bio {
-  margin: 15px 0;
+  max-width: 600px;
+  margin: 15px auto !important;
+  line-height: 1.6;
+  font-size: 15px;
 }
 
 .stats {
   display: flex;
   justify-content: center;
-  gap: 40px;
-  margin: 20px 0;
+  gap: 60px;
+  margin: 25px 0;
 }
 
 .stats div {
   display: flex;
   flex-direction: column;
+  gap: 5px;
+}
+
+.stats strong {
+  font-size: 20px;
+  color: #111827;
+}
+
+.stats span {
+  color: #6b7280;
+  font-size: 14px;
 }
 
 .profile button {
   padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-size: 14px;
   cursor: pointer;
+}
+
+.profile button:hover {
+  background: #1d4ed8;
+}
+
+@media (max-width: 600px) {
+  .profile {
+    padding: 25px 15px;
+  }
+
+  .profile img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .stats {
+    gap: 30px;
+  }
 }

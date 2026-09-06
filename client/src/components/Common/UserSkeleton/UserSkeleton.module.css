@@ -1,0 +1,57 @@
+.card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+.avatar {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #e5e7eb;
+
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.info {
+  flex: 1;
+}
+
+.name {
+  width: 150px;
+  height: 16px;
+  border-radius: 6px;
+  background: #e5e7eb;
+
+  margin-bottom: 10px;
+
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.username {
+  width: 100px;
+  height: 13px;
+  border-radius: 6px;
+  background: #e5e7eb;
+
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
+}

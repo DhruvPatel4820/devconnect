@@ -238,3 +238,19 @@
 .saved{
 color:#2563eb;
 }
+
+.viewPostBtn {
+  margin-left: auto;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #2563eb;
+  background: #eff6ff;
+  transition: all 0.2s ease;
+}
+
+.viewPostBtn:hover {
+  background: #dbeafe;
+}

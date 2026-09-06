@@ -1,8 +1,10 @@
-import { FiImage, FiX } from "react-icons/fi";
-import { useAuth } from "../../../hooks/useAuth";
-import styles from "./CreatePost.module.css";
 import { useEffect, useRef, useState } from "react";
+import { FiImage, FiX } from "react-icons/fi";
+
+import { useAuth } from "../../../hooks/useAuth";
 import { createPost } from "../../../services/post.service";
+
+import styles from "./CreatePost.module.css";
 
 export default function CreatePost({ onPostCreated }) {
   const { user } = useAuth();
@@ -12,21 +14,32 @@ export default function CreatePost({ onPostCreated }) {
   const [images, setImages] = useState([]);
   const [previews, setPreviews] = useState([]);
 
-  const fileRef = useRef();
+  const fileRef = useRef(null);
+
+  // =========================
+  // Image Selection
+  // =========================
 
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
 
     setImages((prev) => {
       const newImages = [...prev, ...files].slice(0, 5);
+
       return newImages;
     });
 
     e.target.value = "";
   };
 
+  // =========================
+  // Image Preview
+  // =========================
+
   useEffect(() => {
-    const urls = images.map((image) => URL.createObjectURL(image));
+    const urls = images.map((image) =>
+      URL.createObjectURL(image),
+    );
 
     setPreviews(urls);
 
@@ -35,12 +48,24 @@ export default function CreatePost({ onPostCreated }) {
     };
   }, [images]);
 
+  // =========================
+  // Remove Image
+  // =========================
+
   const removeImage = (index) => {
-    setImages((prev) => prev.filter((_, i) => i !== index));
+    setImages((prev) =>
+      prev.filter((_, i) => i !== index),
+    );
   };
 
+  // =========================
+  // Create Post
+  // =========================
+
   const handleCreatePost = async () => {
-    if (!content.trim() && images.length === 0) return;
+    if (!content.trim() && images.length === 0) {
+      return;
+    }
 
     try {
       setLoading(true);
@@ -56,6 +81,7 @@ export default function CreatePost({ onPostCreated }) {
 
       await createPost(formData);
 
+      // Reset form
       setContent("");
       setImages([]);
       setPreviews([]);
@@ -64,9 +90,12 @@ export default function CreatePost({ onPostCreated }) {
         fileRef.current.value = "";
       }
 
-      onPostCreated();
+      // Go back to Home
+      if (onPostCreated) {
+        onPostCreated();
+      }
     } catch (error) {
-      console.log(error);
+      console.log("Create post error:", error);
     } finally {
       setLoading(false);
     }
@@ -74,7 +103,11 @@ export default function CreatePost({ onPostCreated }) {
 
   return (
     <div className={styles.createPost}>
-      {/* User */}
+
+      {/* =========================
+          USER + CONTENT
+      ========================= */}
+
       <div className={styles.top}>
         <img
           src={
@@ -86,21 +119,35 @@ export default function CreatePost({ onPostCreated }) {
           alt={user?.fullName || "User"}
         />
 
-        <input
+        <textarea
           placeholder="What's on your mind?"
           value={content}
           onChange={(e) => setContent(e.target.value)}
+          rows={5}
         />
       </div>
 
-      {/* Image Preview */}
+      {/* =========================
+          IMAGE PREVIEW
+      ========================= */}
+
       {previews.length > 0 && (
         <div className={styles.preview}>
           {previews.map((url, index) => (
-            <div key={url} className={styles.previewItem}>
-              <img src={url} alt={`Preview ${index + 1}`} />
+            <div
+              key={url}
+              className={styles.previewItem}
+            >
+              <img
+                src={url}
+                alt={`Preview ${index + 1}`}
+              />
 
-              <button type="button" onClick={() => removeImage(index)}>
+              <button
+                type="button"
+                onClick={() => removeImage(index)}
+                aria-label="Remove image"
+              >
                 <FiX />
               </button>
             </div>
@@ -108,7 +155,10 @@ export default function CreatePost({ onPostCreated }) {
         </div>
       )}
 
-      {/* File Input */}
+      {/* =========================
+          FILE INPUT
+      ========================= */}
+
       <input
         ref={fileRef}
         type="file"
@@ -118,25 +168,36 @@ export default function CreatePost({ onPostCreated }) {
         onChange={handleImageChange}
       />
 
-      {/* Bottom */}
+      {/* =========================
+          BOTTOM
+      ========================= */}
+
       <div className={styles.bottom}>
+
         <button
           type="button"
-          disabled={loading}
+          disabled={loading || images.length >= 5}
           onClick={() => fileRef.current?.click()}
         >
           <FiImage />
-          Photo
+
+          {images.length >= 5
+            ? "Maximum 5 images"
+            : "Add Photo"}
         </button>
 
         <button
           type="button"
           className={styles.postBtn}
           onClick={handleCreatePost}
-          disabled={loading}
+          disabled={
+            loading ||
+            (!content.trim() && images.length === 0)
+          }
         >
           {loading ? "Posting..." : "Post"}
         </button>
+
       </div>
     </div>
   );

@@ -16,6 +16,7 @@ app.use(
     origin: [
       "https://devconnect-frontend-qipf.onrender.com",
       "https://devconnect-1-gsgy.onrender.com",
+      "http://localhost:5173",
     ],
     credentials: true,
   }),

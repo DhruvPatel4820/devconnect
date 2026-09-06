@@ -18,8 +18,8 @@ function ProfileHeader({ profile, setProfile, postsCount, refreshProfile }) {
 
   const [isFollowing, setIsFollowing] = useState(false);
 
-  const isOwnProfile = user._id === profile._id;
-
+  const isOwnProfile = user?._id?.toString() === profile?._id?.toString();
+  
   const handleFollow = async () => {
     try {
       const response = await toggleFollow(profile._id);
@@ -64,7 +64,7 @@ function ProfileHeader({ profile, setProfile, postsCount, refreshProfile }) {
     }
   };
   useEffect(() => {
-    setIsFollowing(profile?.isFollowing?? false);
+    setIsFollowing(profile?.isFollowing ?? false);
   }, [profile]);
 
   return (

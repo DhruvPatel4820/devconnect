@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import CreatePostPage from "../pages/CreatePost/CreatePost.jsx";
+
 import AuthLayout from "../layouts/AuthLayout";
 import MainLayout from "../layouts/MainLayout";
 
@@ -67,6 +69,8 @@ function AppRoutes() {
           <Route path="/saved" element={<SavedPosts />} />
 
           <Route path="/settings" element={<Settings />} />
+
+          <Route path="/create-post" element={<CreatePostPage />} />
         </Route>
 
         {/* ================= 404 ================= */}

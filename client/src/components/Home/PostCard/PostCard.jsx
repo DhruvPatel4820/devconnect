@@ -176,6 +176,10 @@ export default function PostCard({ post, posts, setPosts }) {
           <button onClick={handleSave}>
             {isSaved ? <FaBookmark className={styles.saved} /> : <FiBookmark />}
           </button>
+
+          <Link to={`/post/${post._id}`} className={styles.viewPostBtn}>
+            View Post
+          </Link>
         </div>
       </article>
 

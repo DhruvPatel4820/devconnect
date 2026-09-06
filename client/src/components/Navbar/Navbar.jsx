@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { FiBookmark, FiBell,FiX } from "react-icons/fi";
+
 import {
-  getNotifications,
-  markNotificationAsRead,
-} from "../../services/notification.service";
-import CreatePost from "../Home/CreatePost/CreatePost";
-import {
+  FiBookmark,
+  FiBell,
   FiHome,
   FiSearch,
   FiPlusSquare,
@@ -15,6 +12,11 @@ import {
   FiSettings,
   FiLogOut,
 } from "react-icons/fi";
+
+import {
+  getNotifications,
+  markNotificationAsRead,
+} from "../../services/notification.service";
 
 import { useAuth } from "../../hooks/useAuth";
 import { searchUsers } from "../../services/user.service";
@@ -28,18 +30,21 @@ export default function Navbar() {
 
   const [open, setOpen] = useState(false);
 
-  const [createOpen, setCreateOpen] = useState(false);
-
   // Search State
   const [keyword, setKeyword] = useState("");
   const [results, setResults] = useState([]);
 
+  // Notification State
   const [notifications, setNotifications] = useState([]);
   const [notificationOpen, setNotificationOpen] = useState(false);
 
   const unreadCount = notifications.filter(
     (notification) => !notification.isRead,
   ).length;
+
+  // =========================
+  // Notification Click
+  // =========================
 
   const handleNotificationClick = async (notification) => {
     try {
@@ -69,6 +74,11 @@ export default function Navbar() {
       console.log(error);
     }
   };
+
+  // =========================
+  // Search Users
+  // =========================
+
   useEffect(() => {
     const timer = setTimeout(async () => {
       if (!keyword.trim()) {
@@ -79,10 +89,7 @@ export default function Navbar() {
       try {
         const response = await searchUsers(keyword);
 
-        setResults(response.data);
-
-        // Temporary
-        console.log(response.data);
+        setResults(response.data || []);
       } catch (error) {
         console.log(error);
       }
@@ -91,12 +98,16 @@ export default function Navbar() {
     return () => clearTimeout(timer);
   }, [keyword]);
 
+  // =========================
+  // Fetch Notifications
+  // =========================
+
   useEffect(() => {
     const fetchNotifications = async () => {
       try {
         const response = await getNotifications();
 
-        setNotifications(response.data);
+        setNotifications(response.data || []);
       } catch (error) {
         console.log(error);
       }
@@ -106,6 +117,10 @@ export default function Navbar() {
       fetchNotifications();
     }
   }, [user]);
+
+  // =========================
+  // Logout
+  // =========================
 
   const handleLogout = async () => {
     try {
@@ -122,12 +137,18 @@ export default function Navbar() {
   return (
     <header className={styles.header}>
       <nav className={styles.navbar}>
-        {/* Logo */}
+        {/* =========================
+            LOGO
+        ========================= */}
+
         <Link to="/" className={styles.logo}>
           DevConnect
         </Link>
 
-        {/* Search */}
+        {/* =========================
+            SEARCH
+        ========================= */}
+
         <div className={styles.searchBar}>
           <FiSearch />
 
@@ -137,6 +158,7 @@ export default function Navbar() {
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
           />
+
           {results.length > 0 && (
             <div className={styles.searchResults}>
               {results.map((item) => (
@@ -169,7 +191,10 @@ export default function Navbar() {
           )}
         </div>
 
-        {/* Navigation */}
+        {/* =========================
+            NAVIGATION
+        ========================= */}
+
         <div className={styles.navLinks}>
           <NavLink to="/home" end>
             <FiHome />
@@ -180,10 +205,15 @@ export default function Navbar() {
             <FiSearch />
             <span>Search</span>
           </NavLink>
+
           <Link to="/saved">
             <FiBookmark />
-            Saved
+            <span>Saved</span>
           </Link>
+
+          {/* =========================
+              NOTIFICATIONS
+          ========================= */}
 
           <div className={styles.notificationBox}>
             <button
@@ -221,6 +251,7 @@ export default function Navbar() {
                         }
                         alt=""
                       />
+
                       <div>
                         <p>
                           <strong>{notification.sender?.fullName}</strong>{" "}
@@ -238,15 +269,22 @@ export default function Navbar() {
             )}
           </div>
 
+          {/* =========================
+              CREATE POST
+          ========================= */}
+
           <button
             className={styles.createBtn}
-            onClick={() => setCreateOpen(true)}
+            onClick={() => navigate("/create-post")}
           >
             <FiPlusSquare />
             <span>Create</span>
           </button>
 
-          {/* Avatar */}
+          {/* =========================
+              USER AVATAR
+          ========================= */}
+
           {user && (
             <div className={styles.avatarBox}>
               <button
@@ -287,12 +325,15 @@ export default function Navbar() {
 
                   <hr />
 
-                  <NavLink to={`/profile/${user.username}`}>
+                  <NavLink
+                    to={`/profile/${user.username}`}
+                    onClick={() => setOpen(false)}
+                  >
                     <FiUser />
                     My Profile
                   </NavLink>
 
-                  <NavLink to="/settings">
+                  <NavLink to="/settings" onClick={() => setOpen(false)}>
                     <FiSettings />
                     Settings
                   </NavLink>
@@ -306,24 +347,6 @@ export default function Navbar() {
             </div>
           )}
         </div>
-        {createOpen && (
-          <div className={styles.modalOverlay}>
-            <div className={styles.createModal}>
-              <button
-                className={styles.closeModal}
-                onClick={() => setCreateOpen(false)}
-              >
-                <FiX />
-              </button>
-
-              <CreatePost
-                onPostCreated={() => {
-                  setCreateOpen(false);
-                }}
-              />
-            </div>
-          </div>
-        )}
       </nav>
     </header>
   );

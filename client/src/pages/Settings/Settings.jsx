@@ -52,13 +52,13 @@ export default function Settings() {
       const response = await updateProfile(profile);
 
       setUser(response.data);
-      
+
       if (avatar) {
         const formData = new FormData();
 
         formData.append("avatar", avatar);
-
-        await updateAvatar(formData);
+        const avatarResponse = await updateAvatar(formData);
+        setUser(avatarResponse.data);
       }
 
       setMessage("Profile updated successfully");

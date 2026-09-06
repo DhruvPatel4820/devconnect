@@ -48,3 +48,8 @@ export const getSavedPosts = async () => {
   const response = await api.get("/posts/saved");
   return response.data;
 };
+
+export const getPostById = async (postId) => {
+  const response = await api.get(`/posts/${postId}`);
+  return response.data;
+};

@@ -1,0 +1,162 @@
+.page {
+  min-height: calc(100vh - 80px);
+  background: #f5f7fb;
+  padding: 40px 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Profile Card */
+
+.profileCard {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.profileTop {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  flex-shrink: 0;
+  animation: pulse 1.5s infinite;
+}
+
+.profileInfo {
+  flex: 1;
+}
+
+.name {
+  width: 220px;
+  height: 28px;
+  border-radius: 7px;
+  background: #e5e7eb;
+  margin-bottom: 10px;
+  animation: pulse 1.5s infinite;
+}
+
+.username {
+  width: 130px;
+  height: 15px;
+  border-radius: 6px;
+  background: #e5e7eb;
+  margin-bottom: 20px;
+  animation: pulse 1.5s infinite;
+}
+
+.bio {
+  width: 75%;
+  height: 14px;
+  border-radius: 6px;
+  background: #e5e7eb;
+  margin-bottom: 25px;
+  animation: pulse 1.5s infinite;
+}
+
+/* Stats */
+
+.stats {
+  display: flex;
+  gap: 45px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}
+
+.statNumber {
+  width: 45px;
+  height: 18px;
+  border-radius: 5px;
+  background: #e5e7eb;
+  animation: pulse 1.5s infinite;
+}
+
+.statLabel {
+  width: 65px;
+  height: 12px;
+  border-radius: 5px;
+  background: #e5e7eb;
+  animation: pulse 1.5s infinite;
+}
+
+/* Posts */
+
+.postsSection {
+  width: 100%;
+}
+
+.postsTitle {
+  width: 90px;
+  height: 24px;
+  border-radius: 6px;
+  background: #e5e7eb;
+  margin-bottom: 20px;
+  animation: pulse 1.5s infinite;
+}
+
+/* Animation */
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .page {
+    padding: 25px 15px;
+  }
+
+  .profileCard {
+    padding: 20px;
+  }
+
+  .profileTop {
+    gap: 18px;
+  }
+
+  .avatar {
+    width: 90px;
+    height: 90px;
+  }
+
+  .name {
+    width: 150px;
+    height: 22px;
+  }
+
+  .bio {
+    width: 100%;
+  }
+
+  .stats {
+    gap: 20px;
+  }
+}
