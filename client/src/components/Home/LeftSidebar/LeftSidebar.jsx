@@ -38,7 +38,7 @@ export default function LeftSidebar() {
       {/* Navigation */}
 
       <nav className={styles.menu}>
-        <NavLink to="/" end>
+        <NavLink to="/home" end>
           <FiHome />
           <span>Home</span>
         </NavLink>
