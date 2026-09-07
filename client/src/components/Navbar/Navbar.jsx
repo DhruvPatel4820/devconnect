@@ -38,6 +38,24 @@ export default function Navbar() {
   const [notifications, setNotifications] = useState([]);
   const [notificationOpen, setNotificationOpen] = useState(false);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.target.closest(`.${styles.notificationBox}`)) {
+        setNotificationOpen(false);
+      }
+
+      if (!event.target.closest(`.${styles.avatarBox}`)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const unreadCount = notifications.filter(
     (notification) => !notification.isRead,
   ).length;
@@ -218,7 +236,10 @@ export default function Navbar() {
           <div className={styles.notificationBox}>
             <button
               className={styles.notificationBtn}
-              onClick={() => setNotificationOpen(!notificationOpen)}
+              onClick={() => {
+                setNotificationOpen((prev) => !prev);
+                setOpen(false);
+              }}
             >
               <FiBell />
 
@@ -275,7 +296,11 @@ export default function Navbar() {
 
           <button
             className={styles.createBtn}
-            onClick={() => navigate("/create-post")}
+            onClick={() => {
+              setNotificationOpen(false);
+              setOpen(false);
+              navigate("/create-post");
+            }}
           >
             <FiPlusSquare />
             <span>Create</span>
@@ -289,7 +314,10 @@ export default function Navbar() {
             <div className={styles.avatarBox}>
               <button
                 className={styles.avatarBtn}
-                onClick={() => setOpen(!open)}
+                onClick={() => {
+                  setOpen((prev) => !prev);
+                  setNotificationOpen(false);
+                }}
               >
                 <img
                   src={
